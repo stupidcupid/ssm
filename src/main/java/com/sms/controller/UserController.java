@@ -28,4 +28,10 @@ public class UserController {
 
     }
 
+    @RequestMapping("/toUserPage")
+    public String toUserPage(){
+
+        return "/user";
+    }
+
 }
