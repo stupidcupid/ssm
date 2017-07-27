@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sms.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.sms.domain.User">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="CHAR" />
+        <result column="state" property="state" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+         *
+        from user
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+</mapper>
