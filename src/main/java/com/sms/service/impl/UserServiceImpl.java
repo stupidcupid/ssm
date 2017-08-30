@@ -6,6 +6,8 @@ import com.sms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by nanzhou on 2017/7/27.
  */
@@ -22,5 +24,9 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    public List<User> getList(){
+
+        return userDao.selectList();
+    }
 
 }

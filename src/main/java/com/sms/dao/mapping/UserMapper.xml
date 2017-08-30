@@ -17,4 +17,10 @@
         where id = #{id,jdbcType=BIGINT}
     </select>
 
+    <select id="selectList" resultMap="BaseResultMap">
+        select
+        *
+        from user
+    </select>
+
 </mapper>
