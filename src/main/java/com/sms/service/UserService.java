@@ -13,4 +13,6 @@ public interface UserService {
     User getById(Long id);
 
     List<User> getList();
+
+    User login(String name,String password);
 }

@@ -23,4 +23,10 @@
         from user
     </select>
 
+    <select id="login" resultMap="BaseResultMap">
+        select
+         *
+        from user where username = #{0} and password = #{1}
+    </select>
+
 </mapper>

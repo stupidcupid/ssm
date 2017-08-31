@@ -13,6 +13,8 @@ public interface UserMapper {
     User selectByPrimaryKey(Long id);
 
     List<User> selectList();
+
+    User login(String name,String password);
 }
 
 

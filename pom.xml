@@ -22,7 +22,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <!-- 表示开发的时候引入，发布的时候不会加载此包 -->
             <scope>test</scope>
         </dependency>
@@ -167,9 +167,32 @@
             <version>1.9</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
 
     </dependencies>
+
+
     <build>
+        <plugins>
+            <!--构建项目站点报告插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <!-- 配置站点国际化 -->
+                    <locales>zh_CN</locales>
+                    <!-- 输出编码 -->
+                    <outputEncoding>UTF-8</outputEncoding>
+                </configuration>
+            </plugin>
+        </plugins>
         <resources>
             <resource>
                 <directory>src/main/java</directory>
@@ -182,4 +205,5 @@
         </resources>
         <finalName>ssm</finalName>
     </build>
+
 </project>
