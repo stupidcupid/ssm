@@ -38,7 +38,8 @@
 
                 if('true'==obj){
 
-                    window.open("/user/toSuccessPage")
+                    // window.open("/user/toSuccessPage")
+                    window.location.href="/user/toSuccessPage";
                 }else{
 
                     alert("账号或密码错误！");

@@ -6,5 +6,12 @@
 
       ${userSession.username} ，你好！ 你已经成功登陆!
 
+      <br>
+      sessionID:<%=session.getId()%>
+      <br>
+      SessionIP:<%=request.getServerName()%>
+      <br>
+      SessionPort:<%=request.getServerPort()%>
+
 </body>
 </html>

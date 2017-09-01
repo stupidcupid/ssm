@@ -1,7 +1,5 @@
 package com.sms.contorller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,13 +24,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 /**
  * Created by nanzhou on 2017/8/31.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-@ContextConfiguration({"classpath:/spring-mvc-test.xml", "classpath:/spring-mybatis-test.xml"})
-//当然 你可以声明一个事务管理 每个单元测试都进行事务回滚 无论成功与否
-@TransactionConfiguration(defaultRollback = true)
-@Transactional
-public class UserControllerTest {
+public class UserControllerTest extends BaseControllerTest {
 
 
     private MockMvc mockMvc;
@@ -57,11 +49,11 @@ public class UserControllerTest {
     }
 
     @Test
-    public void login() throws Exception{
+    public void login() throws Exception {
 
         MvcResult mvcResult = mockMvc.perform(post("/user/login")
                 .param("name", "nanzhou")
-                .param("password","123456")
+                .param("password", "123456")
         ).andExpect(status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
         String str = mvcResult.getResponse().getContentAsString();
         System.out.print(str);
