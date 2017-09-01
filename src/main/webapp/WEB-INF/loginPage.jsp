@@ -3,7 +3,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script src="/js/jquery.min.js"></script>
 <body>
-<h2>Hello World!</h2>
 <div style="margin-left: auto;margin-right: auto;">
     <h3> Hello </h3>
     用户名 <input type="text" name="name" id="name" autocomplete="off"/>
@@ -37,7 +36,14 @@
             //async:true,
             success: function (obj) {
 
-                debugger;
+                if('true'==obj){
+
+                    window.open("/user/toSuccessPage")
+                }else{
+
+                    alert("账号或密码错误！");
+                    return false;
+                }
             }
         });
     }

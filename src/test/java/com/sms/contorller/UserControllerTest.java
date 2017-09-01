@@ -18,6 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.annotation.Resource;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
@@ -58,8 +59,8 @@ public class UserControllerTest {
     @Test
     public void login() throws Exception{
 
-        MvcResult mvcResult = mockMvc.perform(get("/user/login")
-                .param("name", "starzou")
+        MvcResult mvcResult = mockMvc.perform(post("/user/login")
+                .param("name", "nanzhou")
                 .param("password","123456")
         ).andExpect(status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
         String str = mvcResult.getResponse().getContentAsString();

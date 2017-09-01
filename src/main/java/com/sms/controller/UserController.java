@@ -67,4 +67,10 @@ public class UserController {
 
         return "/loginPage";
     }
+
+    @RequestMapping("/toSuccessPage")
+    public String toSuccessPage(){
+
+        return "/success";
+    }
 }

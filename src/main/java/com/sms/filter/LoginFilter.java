@@ -29,25 +29,26 @@ public class LoginFilter implements Filter {
         //System.out.println(path);
 
         User user = (User) session.getAttribute("userSession");
-        /*创建类Constants.java，里面写的是无需过滤的页面
+        //创建类Constants.java，里面写的是无需过滤的页面
         for (int i = 0; i < Constants.NoFilter_Pages.length; i++) {
            if (path.indexOf(Constants.NoFilter_Pages[i]) > -1) {
             chain.doFilter(servletRequest, servletResponse);
             return;
           }
-         }*/
+         }
         // 登陆页面无需过滤
-        if (path.indexOf("/user/toUserPage") > -1) {
+        if (path.indexOf("/user/toLoginPage") > -1) {
             chain.doFilter(servletRequest, servletResponse);
             return;
         }
         // 判断如果没有取到员工信息,就跳转到登陆页面
         if (null == user) {
             // 跳转到登陆页面
-            servletResponse.sendRedirect("/user/toUserPage");
+            servletResponse.sendRedirect("/user/toLoginPage");
         } else {
             // 已经登陆,继续此次请求
             chain.doFilter(request, response);
+           // servletResponse.sendRedirect("/user/toSuccessPage");
         }
     }
 
