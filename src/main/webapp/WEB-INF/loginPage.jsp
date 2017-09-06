@@ -7,7 +7,7 @@
     <h3> Hello </h3>
     用户名 <input type="text" name="name" id="name" autocomplete="off"/>
     密码 <input type="password" name="password" id="password" autocomplete="off" >
-    <input type="button" value="登录" id="login" onclick="login()" >
+    <input type="button" value="登录" id="login" onclick="return login()" >
     <input type="button" value="取消" id="cancel">
 </div>
 </body>
@@ -26,7 +26,7 @@
         }
 
         $.ajax({
-            type:"post",
+            type:"POST",
             url: "/user/login",
             dataType : "json",
             data: {
@@ -38,7 +38,6 @@
 
                 if('true'==obj){
 
-                    // window.open("/user/toSuccessPage")
                     window.location.href="/user/toSuccessPage";
                 }else{
 

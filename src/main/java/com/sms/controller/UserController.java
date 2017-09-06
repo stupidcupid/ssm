@@ -2,10 +2,12 @@ package com.sms.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.sms.domain.User;
+import com.sms.service.RedisService;
 import com.sms.service.UserService;
 import org.apache.commons.codec.binary.Hex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +27,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
+    @Autowired
+    private RedisService redisService;
+
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public String getUserById(Long id) {
@@ -43,9 +49,10 @@ public class UserController {
         return "/user";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login")
     @ResponseBody
     public String login(String name, String password, HttpSession session) throws Exception {
+
 
         MessageDigest digest;
         digest = MessageDigest.getInstance("SHA-256");
@@ -56,8 +63,8 @@ public class UserController {
 
         if (null != user) {
             session.setAttribute("userSession", user);
+            //redisService.add(name, 30 * 60, JSON.toJSONString(user));
         }
-
         return JSON.toJSONString(flag);
     }
 
@@ -69,8 +76,13 @@ public class UserController {
     }
 
     @RequestMapping("/toSuccessPage")
-    public String toSuccessPage(){
+    public String toSuccessPage(HttpSession session) {
+
+
+        //String name =  session.getAttribute("userNameSession").toString();
+        //String userJson = redisService.get(name);
 
         return "/success";
     }
+
 }

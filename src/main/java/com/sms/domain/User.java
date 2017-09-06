@@ -1,13 +1,14 @@
 package com.sms.domain;
 
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by nanzhou on 2017/7/27.
  */
 @Table(name = "user")
-public class User {
+public class User implements Serializable{
 
     private Long id;
 

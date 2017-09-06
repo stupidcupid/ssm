@@ -1,5 +1,8 @@
 package com.sms.contorller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.sms.domain.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -51,5 +54,23 @@ public class UserControllerTest extends BaseControllerTest {
         ).andExpect(status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
         String str = mvcResult.getResponse().getContentAsString();
         System.out.print(str);
+    }
+
+
+    @Test
+    public void convert() {
+
+
+        String jsonUser = "{'createTime':'1405619948000','id':1,'password':'8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','username':'nanzhou'}";
+        JSONObject json = JSON.parseObject(jsonUser);
+
+        User user = JSON.parseObject(jsonUser,User.class);
+
+        System.out.println(user.toString());
+       /* String createTime = json.getString("createTime");
+        String id = json.getString("id");
+        String password = json.getString("password");
+        String username = json.getString("username");
+        System.err.println(createTime + " " + id + " " + password + " " + username);*/
     }
 }
