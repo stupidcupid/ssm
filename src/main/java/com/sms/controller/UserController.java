@@ -63,7 +63,7 @@ public class UserController {
 
         if (null != user) {
             session.setAttribute("userSession", user);
-            //redisService.add(name, 30 * 60, JSON.toJSONString(user));
+            ///redisService.add(name, 30 * 60, JSON.toJSONString(user));
         }
         return JSON.toJSONString(flag);
     }
